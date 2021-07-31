@@ -1,21 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="author" content="Irina Singh" />
+    <meta charset="utf-8" />
+    <title>Stopwatch • Stopwatch.net</title>
+    <meta
+      name="description"
+      content="Online stopwatch with lap times. Easy to use and aesthetically pleasing."
+    />
+    <meta name="title" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://stopwatch.net/themes/stopwatch/assets/images/favicon.png"
+    />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <title>Stopwatch</title>
+    <link
+      href="https://stopwatch.net/combine/0ecd68e179acd541cc4ca78c6dbc6b69-1627375089"
+      rel="stylesheet"
+    />
+
+    <script src="https://stopwatch.net/combine/7cbf481e9f24424467d7d792fd7f5a1b-1627118065"></script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145688031-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-145688031-1");
+    </script>
   </head>
-  <body>
-    <header id="main-header" class="bg-success text-white p-4 mb-3">
-      <div class="container">
-        <h1 id="header-title">Stopwatch</h1>
-      </div>
+  <body class="page-index">
+    <!-- Header -->
+    <header id="layout-header">
+      <a href="#"
+        ><img
+          src="https://stopwatch.net/themes/stopwatch/assets/images/logo_head.png"
+          alt="Stopwatch.NET"
+      /></a>
     </header>
+
+    <!-- Content -->
+    <section id="layout-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div class="main-cont">
+              <div class="tab-menu">
+                <div class="item active-item">
+                  <a href="https://stopwatch.net">Stopwatch</a>
+                </div>
+                <div class="item">
+                  <a href="https://stopwatch.net/timer">Timer</a>
+                </div>
+                <div class="item">
+                  <a href="https://stopwatch.net/pomodoro">Pomodoro</a>
+                </div>
+              </div>
+
+              <div class="stopw-cont">
+                <div class="unit">
+                  <h2 class="time-digit" id="hours">00</h2>
+                  <label>HRS</label>
+                </div>
+                <div class="unit">
+                  <h2 class="time-digit" id="minutes">00</h2>
+                  <label>MIN</label>
+                </div>
+                <div class="unit">
+                  <h2 class="time-digit" id="seconds">00</h2>
+                  <label>SEC</label>
+                </div>
+                <div class="unit">
+                  <h2 class="time-digit" id="milliseconds">000</h2>
+                  <label>MS</label>
+                </div>
+                <div class="btn-wrap">
+                  <button class="btn" id="btn-toggle">Start</button>
+                  <button class="btn" id="btn-add-lap">Add Lap</button>
+                  <button class="btn" id="btn-reset">Reset</button>
+                </div>
+              </div>
+
+              <div class="laps">
+                <label id="laps-header">LAPS</label>
+                <ul id="laps-list"></ul>
+                <label id="lap-info"
+                  ><em>To add a lap, press the "Add Lap" button.</em></label
+                >
+              </div>
+              <hr />
+              <div class="content px-5 py-3">
+                <p>
+                  Stopwatch is a free, online stopwatch that's easy to use and
+                  works great on mobile and browsers. It has a sleek design
+                  that's easy to read at any time of day, even in dark
+                  environments.
+                </p>
+                <p>
+                  The way stopwatches work has not changed for a long time. Our
+                  stopwatch is designed for the modern era with its easy-to-use
+                  interface, intuitive features, and sleek, beautiful design.
+                  Our interface is optimized for mobile and desktop usage,
+                  making it comfortable to use whether you're in the office or
+                  on the go.
+                </p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="layout-footer">
+      <div class="container">
+        <div class="footer-logo">
+          <img
+            src="https://stopwatch.net/themes/stopwatch/assets/images/logo_footer.png"
+            alt=""
+          />
+        </div>
+        <div class="footer-items">
+          <a href="#" target="_blank">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://stopwatch.net/combine/71e0a0c615f3fd11a6125f8d6e6f67f9-1627117724"></script>
+    <script src="/modules/system/assets/js/framework.combined-min.js"></script>
+    <link
+      rel="stylesheet"
+      property="stylesheet"
+      href="/modules/system/assets/css/framework.extras.css"
+    />
+    <script src="https://stopwatch.net/combine/fc36382d3e3152e6986dff37b8e10382-1627116743"></script>
+    <div class="stripe-loading-indicator loaded">
+      <div class="stripe"></div>
+      <div class="stripe-loaded"></div>
+    </div>
   </body>
 </html>
