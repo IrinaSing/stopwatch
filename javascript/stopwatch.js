@@ -52,7 +52,7 @@ const toggle = (e) => {
     startBtn.value = "stop";
     startBtn.innerHTML = "Stop";
   } else {
-    target.value = "start";
+    startBtn.value = "start";
     startBtn.innerHTML = "Start";
     clearInterval(timer);
     timer = 0;
@@ -60,4 +60,26 @@ const toggle = (e) => {
 };
 
 const startBtn = document.getElementById("btn-toggle");
-document.addEventListener("click", toggle);
+startBtn.addEventListener("click", toggle);
+
+const reset = (e) => {
+  const target = e.target;
+  if (target.id === "btn-reset") {
+    clearInterval(timer);
+
+    hours = 000;
+    min = 000;
+    sec = 000;
+    millisec = 0000;
+    count = 0;
+
+    document.getElementById("milliseconds").innerHTML = "0000";
+    document.getElementById("seconds").innerHTML = "00";
+    document.getElementById("minutes").innerHTML = "00";
+    document.getElementById("hours").innerHTML = "00";
+  }
+};
+
+const resetBtn = document.getElementById("btn-reset");
+resetBtn.addEventListener("click", reset);
+resetBtn.addEventListener("click", toggle);
