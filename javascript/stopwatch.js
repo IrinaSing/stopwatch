@@ -4,6 +4,9 @@ let hours = 000,
   millisec = 0000,
   count = 0;
 
+let timer = 0;
+let lapNow = null;
+
 // prepare for display with leading zeros
 const addZero = (num) => {
   if (num < 10) {
@@ -43,8 +46,6 @@ function newtimer() {
   document.getElementById("hours").innerHTML = addZero(hours);
 }
 
-let timer = 0;
-
 const toggle = (e) => {
   const target = e.target;
   if (target.id === "btn-toggle" && target.value === "start") {
@@ -77,14 +78,16 @@ const reset = (e) => {
     document.getElementById("seconds").innerHTML = addZero(sec);
     document.getElementById("minutes").innerHTML = addZero(min);
     document.getElementById("hours").innerHTML = addZero(hours);
+
+    // clear laps
+    const ulEl = document.getElementById("laps-list");
+    ulEl.innerHTML = "";
   }
 };
 
 const resetBtn = document.getElementById("btn-reset");
 resetBtn.addEventListener("click", reset);
 resetBtn.addEventListener("click", toggle);
-
-let lapNow = null;
 
 const addLap = (e) => {
   const target = e.target;
