@@ -22,7 +22,7 @@ const dispMillis = (num) => {
     num = "00" + num;
     return num;
   } else if (num < 10) {
-    num = "0" + num;
+    num = "000" + num;
     return num;
   } else {
     return num;
@@ -94,7 +94,7 @@ const addLap = (e) => {
   const s = addZero(sec);
   const mi = millisec;
 
-  if (target.id === "btn-add-lap") {
+  if (target.id === "btn-add-lap" && count !== 0) {
     lapNow = `${h}:${m}:${s}.${mi}`;
 
     const ulEl = document.getElementById("laps-list");
