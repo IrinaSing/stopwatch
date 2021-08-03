@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Timer • Stopwatch.net</title>
+    <meta
+      name="description"
+      content="Online timer with alerts, start/stop/reset and ready to go presets. This timer is perfect for every activity such as sports, cooking, playing music, taking quizzes."
+    />
+    <meta name="title" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://stopwatch.net/themes/stopwatch/assets/images/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stopwatch.net/combine/0ecd68e179acd541cc4ca78c6dbc6b69-1627375089"
+      rel="stylesheet"
+    />
+    <script src="https://stopwatch.net/combine/7cbf481e9f24424467d7d792fd7f5a1b-1627118065"></script>
+
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145688031-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-145688031-1");
+    </script>
+  </head>
+
+  <body class="page-timer">
+    <!-- Header -->
+    <header id="layout-header">
+      <a href="https://stopwatch.net"
+        ><img
+          src="https://stopwatch.net/themes/stopwatch/assets/images/logo_head.png"
+          alt="Stopwatch.NET"
+      /></a>
+    </header>
+
+    <!-- Content -->
+    <section id="layout-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div class="main-cont">
+              <div class="tab-menu">
+                <div class="item">
+                  <a href="./index.html">Stopwatch</a>
+                </div>
+                <div class="item active-item">
+                  <a href="#">Timer</a>
+                </div>
+                <div class="item">
+                  <a href="#">Pomodoro</a>
+                </div>
+              </div>
+
+              <div
+                class="notification-permission"
+                id="notif-permission"
+                style="display: block"
+              >
+                <a href="#" id="request-notification"
+                  >Click here to activate notifications</a
+                >, to get notified when the timer is up!
+              </div>
+
+              <div class="timer-input">
+                <h1 id="presets-title">Timer</h1>
+                <label>SET THE TIMER</label><br />
+                <div class="full-input">
+                  <input type="number" id="input_hh" value="0" /><label for=""
+                    >HRS</label
+                  >
+                </div>
+                <div class="full-input">
+                  <input type="number" id="input_mm" value="0" /><label for=""
+                    >MIN</label
+                  >
+                </div>
+                <div class="full-input">
+                  <input type="number" id="input_ss" value="0" /><label for=""
+                    >SEC</label
+                  >
+                </div>
+                <div class="btn-wrap">
+                  <button id="set">Set</button>
+                </div>
+              </div>
+
+              <div class="stopw-cont timer-stopw-cont">
+                <div class="unit">
+                  <h2 class="time-digit" id="hours">00</h2>
+                  <label>HRS</label>
+                </div>
+                <div class="unit">
+                  <h2 class="time-digit" id="minutes">00</h2>
+                  <label>MIN</label>
+                </div>
+                <div class="unit">
+                  <h2 class="time-digit" id="seconds">00</h2>
+                  <label>SEC</label>
+                </div>
+                <div class="btn-wrap">
+                  <button class="btn" id="btn-toggle">Start</button>
+                  <button class="btn" id="btn-reset">Reset</button>
+                </div>
+              </div>
+
+              <div class="timer-input btn-wrap">
+                <label>SELECT PRESET</label><br />
+                <div class="row main-presets">
+                  <div class="col mb-3">
+                    <button
+                      class="btn btn-short-break presetTimerBtn"
+                      data-timer="5"
+                    >
+                      Short Break
+                    </button>
+                  </div>
+                  <div class="col mb-3">
+                    <button
+                      class="btn btn-long-break presetTimerBtn"
+                      data-timer="15"
+                    >
+                      Long Break
+                    </button>
+                  </div>
+                </div>
+                <div class="row secondary-presets">
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="5"
+                    >
+                      5 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="10"
+                    >
+                      10 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="15"
+                    >
+                      15 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="20"
+                    >
+                      20 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="25"
+                    >
+                      25 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="30"
+                    >
+                      30 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="35"
+                    >
+                      35 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="40"
+                    >
+                      40 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="45"
+                    >
+                      45 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="50"
+                    >
+                      50 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="55"
+                    >
+                      55 Min
+                    </button>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-6 mb-3">
+                    <button
+                      class="btn btn-preset presetTimerBtn"
+                      data-timer="60"
+                    >
+                      60 Min
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="content px-5 py-3">
+                <p>
+                  An online timer with notifications, start/stop/reset and ready
+                  to go presets. This timer is perfect for every activity such
+                  as sports, cooking, playing music, taking quizzes. The tool is
+                  designed with simplicity in mind for you to just select your
+                  prefered timer and start the countdown.
+                </p>
+                <p>
+                  We have prepared different timer presets for any occasion you
+                  might have. The list of preset timers are:
+                </p>
+                <ul class="content-list">
+                  <a href="/timer/5"><li>5 Min Timer</li></a>
+                  <a href="/timer/10"><li>10 Min Timer</li></a>
+                  <a href="/timer/15"><li>15 Min Timer</li></a>
+                  <a href="/timer/20"><li>20 Min Timer</li></a>
+                  <a href="/timer/25"><li>25 Min Timer</li></a>
+                  <a href="/timer/30"><li>30 Min Timer</li></a>
+                  <a href="/timer/35"><li>35 Min Timer</li></a>
+                  <a href="/timer/40"><li>40 Min Timer</li></a>
+                  <a href="/timer/45"><li>45 Min Timer</li></a>
+                  <a href="/timer/50"><li>50 Min Timer</li></a>
+                  <a href="/timer/55"><li>55 Min Timer</li></a>
+                  <a href="/timer/60"><li>60 Min Timer</li></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var $presetTimer = "00";
+      </script>
+    </section>
+
+    <!-- Footer -->
+    <footer id="layout-footer">
+      <div class="container">
+        <div class="footer-logo">
+          <img
+            src="https://stopwatch.net/themes/stopwatch/assets/images/logo_footer.png"
+            alt=""
+          />
+        </div>
+        <div class="footer-items">
+          <a href="#" target="_blank">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts
+    <script src="https://stopwatch.net/combine/71e0a0c615f3fd11a6125f8d6e6f67f9-1627117724"></script>
+    <script src="/modules/system/assets/js/framework.combined-min.js"></script>
+    <link
+      rel="stylesheet"
+      property="stylesheet"
+      href="/modules/system/assets/css/framework.extras.css"
+    />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://stopwatch.net/combine/4851c1179a7c8096dfb9645330dbf818-1627315203"></script>
+     -->
+    <div class="stripe-loading-indicator loaded">
+      <div class="stripe"></div>
+      <div class="stripe-loaded"></div>
+    </div>
+  </body>
+</html>
