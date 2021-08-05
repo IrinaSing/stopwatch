@@ -70,16 +70,6 @@
                 </div>
               </div>
 
-              <div
-                class="notification-permission"
-                id="notif-permission"
-                style="display: block"
-              >
-                <a href="#" id="request-notification"
-                  >Click here to activate notifications</a
-                >, to get notified when the timer is up!
-              </div>
-
               <div class="timer-input">
                 <h1 id="presets-title">Timer</h1>
                 <label>SET THE TIMER</label><br />
@@ -117,129 +107,116 @@
                   <label>SEC</label>
                 </div>
                 <div class="btn-wrap">
-                  <button class="btn" id="btn-toggle">Start</button>
+                  <button class="btn" id="btn-toggle" value="start">
+                    Start
+                  </button>
                   <button class="btn" id="btn-reset">Reset</button>
                 </div>
               </div>
 
               <div class="timer-input btn-wrap">
                 <label>SELECT PRESET</label><br />
-                <div class="row main-presets">
-                  <div class="col mb-3">
-                    <button
-                      class="btn btn-short-break presetTimerBtn"
-                      data-timer="5"
-                    >
-                      Short Break
-                    </button>
+
+                <container id="presetCont">
+                  <div class="row secondary-presets">
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="5"
+                      >
+                        5 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="10"
+                      >
+                        10 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="15"
+                      >
+                        15 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="20"
+                      >
+                        20 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="25"
+                      >
+                        25 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="30"
+                      >
+                        30 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="35"
+                      >
+                        35 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="40"
+                      >
+                        40 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="45"
+                      >
+                        45 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="50"
+                      >
+                        50 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="55"
+                      >
+                        55 Min
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-6 mb-3">
+                      <button
+                        class="btn btn-preset presetTimerBtn"
+                        data-timer="60"
+                      >
+                        60 Min
+                      </button>
+                    </div>
                   </div>
-                  <div class="col mb-3">
-                    <button
-                      class="btn btn-long-break presetTimerBtn"
-                      data-timer="15"
-                    >
-                      Long Break
-                    </button>
-                  </div>
-                </div>
-                <div class="row secondary-presets">
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="5"
-                    >
-                      5 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="10"
-                    >
-                      10 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="15"
-                    >
-                      15 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="20"
-                    >
-                      20 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="25"
-                    >
-                      25 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="30"
-                    >
-                      30 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="35"
-                    >
-                      35 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="40"
-                    >
-                      40 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="45"
-                    >
-                      45 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="50"
-                    >
-                      50 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="55"
-                    >
-                      55 Min
-                    </button>
-                  </div>
-                  <div class="col-md-3 col-sm-4 col-6 mb-3">
-                    <button
-                      class="btn btn-preset presetTimerBtn"
-                      data-timer="60"
-                    >
-                      60 Min
-                    </button>
-                  </div>
-                </div>
+                </container>
               </div>
               <hr />
               <div class="content px-5 py-3">
@@ -254,20 +231,6 @@
                   We have prepared different timer presets for any occasion you
                   might have. The list of preset timers are:
                 </p>
-                <ul class="content-list">
-                  <a href="/timer/5"><li>5 Min Timer</li></a>
-                  <a href="/timer/10"><li>10 Min Timer</li></a>
-                  <a href="/timer/15"><li>15 Min Timer</li></a>
-                  <a href="/timer/20"><li>20 Min Timer</li></a>
-                  <a href="/timer/25"><li>25 Min Timer</li></a>
-                  <a href="/timer/30"><li>30 Min Timer</li></a>
-                  <a href="/timer/35"><li>35 Min Timer</li></a>
-                  <a href="/timer/40"><li>40 Min Timer</li></a>
-                  <a href="/timer/45"><li>45 Min Timer</li></a>
-                  <a href="/timer/50"><li>50 Min Timer</li></a>
-                  <a href="/timer/55"><li>55 Min Timer</li></a>
-                  <a href="/timer/60"><li>60 Min Timer</li></a>
-                </ul>
               </div>
             </div>
           </div>
@@ -295,17 +258,7 @@
       </div>
     </footer>
 
-    <!-- Scripts
-    <script src="https://stopwatch.net/combine/71e0a0c615f3fd11a6125f8d6e6f67f9-1627117724"></script>
-    <script src="/modules/system/assets/js/framework.combined-min.js"></script>
-    <link
-      rel="stylesheet"
-      property="stylesheet"
-      href="/modules/system/assets/css/framework.extras.css"
-    />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://stopwatch.net/combine/4851c1179a7c8096dfb9645330dbf818-1627315203"></script>
-     -->
+    <script src="javascript/timer.js"></script>
     <div class="stripe-loading-indicator loaded">
       <div class="stripe"></div>
       <div class="stripe-loaded"></div>

@@ -1,6 +1,6 @@
-let hours = 000,
-  min = 000,
-  sec = 000,
+let hours = 00,
+  min = 00,
+  sec = 00,
   millisec = 0000,
   count = 0;
 
