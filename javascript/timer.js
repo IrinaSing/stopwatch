@@ -21,7 +21,6 @@ const manualSet = (e) => {
     hours = Number(inputHr.value);
     min = Number(inputMin.value);
     sec = Number(inputSec.value);
-    console.log("set", hours, min, sec);
     displayTime();
   }
 };
