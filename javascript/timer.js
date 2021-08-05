@@ -13,26 +13,14 @@ let setMin = document.getElementById("minutes").innerHTML;
 let setSec = document.getElementById("seconds").innerHTML;
 
 // user clicks button set and values from input goes into timer
-// check if it is not negative number
+// it doesn't work
 const manualSet = (e) => {
   const target = e.target;
   if (target.id === "set") {
-    if (inputHr.value < 0) {
-      hours = 00;
-    } else {
-      hours = inputHr.value;
-    }
-    if (inputMin.value < 0) {
-      min = 00;
-    } else {
-      min = inputMin.value;
-    }
-    if (inputSec.value < 0) {
-      sec = 00;
-    } else {
-      sec = inputSec.value;
-    }
-
+    hours = inputHr.value;
+    min = inputMin.value;
+    sec = inputSec.value;
+    console.log("set", hours, min, sec);
     displayTime();
   }
 };
