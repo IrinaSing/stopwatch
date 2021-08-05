@@ -17,6 +17,7 @@ let setSec = document.getElementById("seconds").innerHTML;
 const manualSet = (e) => {
   const target = e.target;
   if (target.id === "set") {
+    reset();
     hours = Number(inputHr.value);
     min = Number(inputMin.value);
     sec = Number(inputSec.value);
@@ -32,6 +33,7 @@ setBtn.addEventListener("click", manualSet);
 const setPreset = (e) => {
   const target = e.target;
   if (target.tagName === "BUTTON") {
+    reset();
     const presetValue = target.dataset.timer;
     const toInteger = parseInt(presetValue, 10);
     hours = 00;
