@@ -17,9 +17,9 @@ let setSec = document.getElementById("seconds").innerHTML;
 const manualSet = (e) => {
   const target = e.target;
   if (target.id === "set") {
-    hours = inputHr.value;
-    min = inputMin.value;
-    sec = inputSec.value;
+    hours = Number(inputHr.value);
+    min = Number(inputMin.value);
+    sec = Number(inputSec.value);
     console.log("set", hours, min, sec);
     displayTime();
   }
@@ -31,7 +31,6 @@ setBtn.addEventListener("click", manualSet);
 // user clicks one one of preset buttons and it goes into timer
 const setPreset = (e) => {
   const target = e.target;
-  console.log(target.tagName);
   if (target.tagName === "BUTTON") {
     const presetValue = target.dataset.timer;
     const toInteger = parseInt(presetValue, 10);
@@ -57,7 +56,7 @@ const reset = () => {
   min = 00;
   sec = 00;
   //stop the timer after pressing "reset"
-  clearInterval();
+  clearInterval(timer);
   displayTime();
   startBtn.value = "start";
   startBtn.innerHTML = "Start";
@@ -84,9 +83,7 @@ resetBtn.addEventListener("click", reset);
 const runTimer = () => {
   //logic
   if (hours === 00 && min === 00 && sec === 00) {
-    hours = 00;
-    min = 00;
-    sec = 00;
+    reset();
   } else if (sec !== 00) {
     sec--;
   } else if (min !== 00 && sec === 0) {
