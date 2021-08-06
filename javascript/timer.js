@@ -2,11 +2,6 @@ let hours = 00,
   min = 00,
   sec = 00;
 
-// user input in DOM
-const inputHr = document.getElementById("input_hh");
-const inputMin = document.getElementById("input_mm");
-const inputSec = document.getElementById("input_ss");
-
 // timer display in DOM
 let setHours = document.getElementById("hours").innerHTML;
 let setMin = document.getElementById("minutes").innerHTML;
@@ -16,6 +11,11 @@ let setSec = document.getElementById("seconds").innerHTML;
 // it doesn't work
 const manualSet = (e) => {
   const target = e.target;
+  // user input in DOM
+  const inputHr = document.getElementById("input_hh");
+  const inputMin = document.getElementById("input_mm");
+  const inputSec = document.getElementById("input_ss");
+
   if (target.id === "set") {
     reset();
     hours = Number(inputHr.value);
