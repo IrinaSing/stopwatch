@@ -18,7 +18,7 @@ let timer = 0;
 const addZero = (num) => {
   if (num < 10) {
     num = "0" + num;
-    return num;
+    return num.toString();
   } else {
     return num.toString(); // check if toString works
   }
@@ -38,25 +38,19 @@ const displayTime = () => {
 // The logic for the function should be nearly identical to the implementation in stopwatch.js
 // only instead of doing timer = setInterval(newtimer, 10); you should instead call countDown for the very first time
 // we will not need any setInterval calls in this whole file
-const toggle = () => {
-  console.log("start toggle");
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (startBtn.id === "btn-toggle" && startBtn.value === "start") {
-        resolve(() => {
-          startBtn.value = "stop";
-          startBtn.innerHTML = "Stop";
-          timer = setInterval(runTimer, 1000);
-        });
-      } else {
-        reject();
-        startBtn.value = "start";
-        startBtn.innerHTML = "Start";
-        clearInterval(timer);
-        timer = 0;
-      }
-    }, 1000);
-  });
+
+const toggle = (e) => {
+  const target = e.target;
+  if (target.id === "btn-toggle" && target.value === "start") {
+    timer = countDown();
+    startBtn.value = "stop";
+    startBtn.innerHTML = "Stop";
+  } else {
+    startBtn.value = "start";
+    startBtn.innerHTML = "Start";
+    clearInterval(timer);
+    timer = 0;
+  }
 };
 
 // Is there a reason we have to wait 500 milliseconds before we can say whether hours === 00 && min === 00 && sec === 00?
