@@ -48,7 +48,6 @@ const toggle = (e) => {
   } else {
     startBtn.value = "start";
     startBtn.innerHTML = "Start";
-    clearInterval(timer);
     timer = 0;
   }
 };
@@ -58,18 +57,8 @@ const toggle = (e) => {
 //
 // try to keep in mind why promises are used, a promise represent something that at some point in the future will resolve to a value...
 // If we can immediately return the desired value and we do not gain anything by waiting we should not use a Promise.
-function timerIsSet(hours, min, sec) {
-  console.log("start timerIsSet");
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (hours === 00 && min === 00 && sec === 00) {
-        reject("don't run the timer");
-      } else {
-        resolve("start the timer");
-      }
-    }, 500);
-  });
-}
+
+// deleted func
 
 // this function is where the magic will happen
 // try to think about this countDown function as 1 step in the countdown process that will subtract exactly one second from the remaining time after one second before calling itself again
@@ -77,7 +66,6 @@ function timerIsSet(hours, min, sec) {
 //
 // Take a look at the countDownTemplate function I provided for some inspiration on what this function should do
 function countDown() {
-  console.log("countDown");
   return new Promise((resolve) => {
     setTimeout(() => {
       const counted = () => {
