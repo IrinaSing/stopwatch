@@ -7,6 +7,12 @@ let setHours = document.getElementById("hours").innerHTML;
 let setMin = document.getElementById("minutes").innerHTML;
 let setSec = document.getElementById("seconds").innerHTML;
 
+const displayTime = () => {
+  document.getElementById("hours").innerHTML = addZero(hours);
+  document.getElementById("minutes").innerHTML = addZero(min);
+  document.getElementById("seconds").innerHTML = addZero(sec);
+};
+
 // user clicks button set and values from input goes into timer
 // it doesn't work
 const manualSet = (e) => {
@@ -40,12 +46,6 @@ const setPreset = (e) => {
     sec = 00;
     displayTime();
   }
-};
-
-const displayTime = () => {
-  document.getElementById("hours").innerHTML = addZero(hours);
-  document.getElementById("minutes").innerHTML = addZero(min);
-  document.getElementById("seconds").innerHTML = addZero(sec);
 };
 
 const presetContainer = document.getElementById("presetCont");

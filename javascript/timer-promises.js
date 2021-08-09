@@ -1,16 +1,75 @@
 let hours = 00,
   min = 00,
-  sec = 10;
-const startBtn = document.getElementById("btn-toggle");
-// user input in DOM
-//const inputHr = document.getElementById("input_hh");
-//const inputMin = document.getElementById("input_mm");
-//const inputSec = document.getElementById("input_ss");
+  sec = 00,
+  count = 0;
 
-let timer = 0;
-// changes class of start/pause button
+// timer display in DOM
+let setHours = document.getElementById("hours").innerHTML;
+let setMin = document.getElementById("minutes").innerHTML;
+let setSec = document.getElementById("seconds").innerHTML;
 
-// prepare for display with leading zeros
+// button reset clears up timer values
+const reset = () => {
+  console.log("reset");
+  hours = 00;
+  min = 00;
+  sec = 00;
+  count = 0;
+  displayTime();
+  startBtn.value = "start";
+  startBtn.innerHTML = "Start";
+};
+const resetBtn = document.getElementById("btn-reset");
+resetBtn.addEventListener("click", reset);
+
+// user clicks button set and values from input goes into timer
+// it doesn't work
+const manualSet = (e) => {
+  const target = e.target;
+  // user input in DOM
+  const inputHr = document.getElementById("input_hh");
+  const inputMin = document.getElementById("input_mm");
+  const inputSec = document.getElementById("input_ss");
+
+  if (target.id === "set") {
+    reset();
+    hours = Number(inputHr.value);
+    min = Number(inputMin.value);
+    sec = Number(inputSec.value);
+    count = hours * 60 * 60 + min * 60 + sec;
+    console.log(count);
+    displayTime();
+  }
+};
+
+const setBtn = document.getElementById("set");
+setBtn.addEventListener("click", manualSet);
+
+// user clicks one one of preset buttons and it goes into timer
+const setPreset = (e) => {
+  const target = e.target;
+  if (target.tagName === "BUTTON") {
+    reset();
+    const presetValue = target.dataset.timer;
+    const toInteger = parseInt(presetValue, 10);
+    hours = 00;
+    min = toInteger; //num
+    sec = 00; // string. why?
+    count = hours * 60 * 60 + min * 60 + sec;
+    console.log(count, "preset count");
+    displayTime();
+  }
+};
+
+const displayTime = () => {
+  console.log("display time");
+  document.getElementById("hours").innerHTML = addZero(hours);
+  document.getElementById("minutes").innerHTML = addZero(min);
+  document.getElementById("seconds").innerHTML = addZero(sec);
+};
+
+const presetContainer = document.getElementById("presetCont");
+presetContainer.addEventListener("click", setPreset);
 
 // Nitpicky comment but now this function will sometimes return a string and sometimes return a number value
 // e.g. addZero(5) will return "05", whereas addZero(12) will return 12 instead of "12"
@@ -18,16 +77,12 @@ let timer = 0;
 const addZero = (num) => {
   if (num < 10) {
     num = "0" + num;
-    return num.toString();
+    num = num.toString();
+    return num;
   } else {
-    return num.toString(); // check if toString works
+    num = num.toString();
+    return num; // check if toString works
   }
-};
-
-const displayTime = () => {
-  document.getElementById("hours").innerHTML = addZero(hours);
-  document.getElementById("minutes").innerHTML = addZero(min);
-  document.getElementById("seconds").innerHTML = addZero(sec);
 };
 
 // the toggle function itself should toggle the button from start to stop or vice-versa
@@ -38,14 +93,16 @@ const displayTime = () => {
 // The logic for the function should be nearly identical to the implementation in stopwatch.js
 // only instead of doing timer = setInterval(newtimer, 10); you should instead call countDown for the very first time
 // we will not need any setInterval calls in this whole file
+let timer = 0;
 
 const toggle = (e) => {
   const target = e.target;
   if (target.id === "btn-toggle" && target.value === "start") {
-    timer = countDown();
+    timer = countDownTemplate();
     startBtn.value = "stop";
     startBtn.innerHTML = "Stop";
   } else {
+    timer = false;
     startBtn.value = "start";
     startBtn.innerHTML = "Start";
     timer = 0;
@@ -61,30 +118,34 @@ const toggle = (e) => {
 // deleted func
 
 // this function is where the magic will happen
-// try to think about this countDown function as 1 step in the countdown process that will subtract exactly one second from the remaining time after one second before calling itself again
+// try to think about this countDown function as 1 step in the countdown process that will subtract exactly one
+// second from the remaining time after one second before calling itself again
 // until there is no more time left on the clock
 //
 // Take a look at the countDownTemplate function I provided for some inspiration on what this function should do
-function countDown() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const counted = () => {
-        if (sec !== 00) {
-          sec--;
-        } else if (min !== 00 && sec === 0) {
-          sec = 59;
-          min--;
-        } else if (hours !== 0 && min === 0) {
-          min = 60;
-          hours--;
-        }
+function newtimer() {
+  console.log("new timer");
+  console.log(hours, sec, min);
+  count--; // increment in count.
+  console.log(count, "count");
 
-        console.log(hours, min, sec);
-        displayTime();
-      };
-      resolve(counted);
-    }, 1000);
-  });
+  min = Math.floor(count / 60);
+  console.log(min, "min");
+  sec = count - min * 60;
+  console.log(sec, "sec");
+  hours = Math.floor(count / 3600);
+  console.log(hours, "hours");
+  /*
+  hours = Math.floor((count % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  min = Math.floor((count % (1000 * 60 * 60)) / (1000 * 60));
+  sec = Math.floor((count % (1000 * 60)) / 1000);
+
+  /*
+  hours = parseInt((count * 10) / 1000 / 60 / 60); // calculate hours
+  min = parseInt((count * 10) / 1000 / 60); // calculate minutes
+  sec = parseInt(((count * 10) / 1000) % 60); // calculate seconds
+*/
+  displayTime();
 }
 
 /**
@@ -93,6 +154,7 @@ function countDown() {
  * This means that when someone registers a '.then' callback on my result, that callback will be called after 1 second
  */
 function waitOneSecond() {
+  console.log("wait1sec");
   return new Promise((resolve, reject) => {
     // this code will be executed immediately!
     setTimeout(() => {
@@ -102,25 +164,32 @@ function waitOneSecond() {
   });
 }
 function countDownTemplate() {
+  console.log("countDownTemplate");
   // I will wait for one second, and then perform one step of the countdown process!
   waitOneSecond().then(() => {
     // if I reach this part it means one second has passed!
     // Did the user press the stop button in the meantime? If he did I can probably stop counting from here!
-    //
+    if (startBtn.value === "start") {
+      console.log("stop pressed", startBtn.value);
+      console.log(count, "btn pressed or not");
+      return;
+    } else if (count !== 0) {
+      console.log("count in countdown", count);
+      newtimer();
+    }
     // I can probably perform some logic here do decrement the seconds/minutes/hours!
-    //
+
     // Did I finish my countdown? If I did I can probably stop counting from here!
-    //
+    if (count === 0) {
+      reset();
+    } else {
+      countDownTemplate();
+    }
     // otherwise I should probably continue the countdown by one step!
     // luckily I know just the function I can call that will decrement the timer over 1 second...
   });
 }
 
-const toggleAndSet = Promise.all([toggle(), timerIsSet(hours, min, sec)]);
-
 // pressing the startbutton can call the toggle function directly, there is nothing it should wait for
-startBtn.addEventListener("click", () =>
-  toggleAndSet
-    .then(countDown()) // if not - run countdown
-    .catch((err) => console.error(err))
-);
+const startBtn = document.getElementById("btn-toggle");
+startBtn.addEventListener("click", toggle);
