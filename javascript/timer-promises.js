@@ -127,10 +127,7 @@ function waitOneSecond() {
 }
 function countDownTemplate() {
   console.log("countDownTemplate");
-  // I will wait for one second, and then perform one step of the countdown process!
   waitOneSecond().then(() => {
-    // if I reach this part it means one second has passed!
-    // Did the user press the stop button in the meantime? If he did I can probably stop counting from here!
     if (startBtn.value === "start") {
       console.log("stop pressed", startBtn.value);
       console.log(count, "btn pressed or not");
@@ -139,16 +136,11 @@ function countDownTemplate() {
       console.log("count in countdown", count);
       newtimer();
     }
-    // I can probably perform some logic here do decrement the seconds/minutes/hours!
-
-    // Did I finish my countdown? If I did I can probably stop counting from here!
     if (count === 0) {
       reset();
     } else {
       countDownTemplate();
     }
-    // otherwise I should probably continue the countdown by one step!
-    // luckily I know just the function I can call that will decrement the timer over 1 second...
   });
 }
 
