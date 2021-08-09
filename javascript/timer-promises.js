@@ -10,7 +10,6 @@ let setSec = document.getElementById("seconds").innerHTML;
 
 // button reset clears up timer values
 const reset = () => {
-  console.log("reset");
   hours = 00;
   min = 00;
   sec = 00;
@@ -35,7 +34,6 @@ const manualSet = (e) => {
     min = Number(inputMin.value);
     sec = Number(inputSec.value);
     count = hours * 60 * 60 + min * 60 + sec;
-    console.log(count);
     displayTime();
   }
 };
@@ -54,13 +52,11 @@ const setPreset = (e) => {
     min = toInteger; //num
     sec = 00; // string. why?
     count = hours * 60 * 60 + min * 60 + sec;
-    console.log(count, "preset count");
     displayTime();
   }
 };
 
 const displayTime = () => {
-  console.log("display time");
   document.getElementById("hours").innerHTML = addZero(hours);
   document.getElementById("minutes").innerHTML = addZero(min);
   document.getElementById("seconds").innerHTML = addZero(sec);
@@ -106,7 +102,6 @@ function newtimer() {
   } else if (hours !== 0 && min === 0) {
     min = 60;
     hours--;
-    console.log(hours, min, sec);
   }
   displayTime();
 }
@@ -116,7 +111,6 @@ function newtimer() {
  * This means that when someone registers a '.then' callback on my result, that callback will be called after 1 second
  */
 function waitOneSecond() {
-  console.log("wait1sec");
   return new Promise((resolve, reject) => {
     // this code will be executed immediately!
     setTimeout(() => {
@@ -126,14 +120,10 @@ function waitOneSecond() {
   });
 }
 function countDownTemplate() {
-  console.log("countDownTemplate");
   waitOneSecond().then(() => {
     if (startBtn.value === "start") {
-      console.log("stop pressed", startBtn.value);
-      console.log(count, "btn pressed or not");
       return;
     } else if (count !== 0) {
-      console.log("count in countdown", count);
       newtimer();
     }
     if (count === 0) {
