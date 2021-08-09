@@ -22,8 +22,6 @@ const reset = () => {
 const resetBtn = document.getElementById("btn-reset");
 resetBtn.addEventListener("click", reset);
 
-// user clicks button set and values from input goes into timer
-// it doesn't work
 const manualSet = (e) => {
   const target = e.target;
   // user input in DOM
@@ -71,9 +69,6 @@ const displayTime = () => {
 const presetContainer = document.getElementById("presetCont");
 presetContainer.addEventListener("click", setPreset);
 
-// Nitpicky comment but now this function will sometimes return a string and sometimes return a number value
-// e.g. addZero(5) will return "05", whereas addZero(12) will return 12 instead of "12"
-// it is cleaner to return the 12 as a string as well in this example, this way it is clear that this value is no longer intended for calculations after this point.
 const addZero = (num) => {
   if (num < 10) {
     num = "0" + num;
@@ -85,14 +80,6 @@ const addZero = (num) => {
   }
 };
 
-// the toggle function itself should toggle the button from start to stop or vice-versa
-// and make sure that the timer starts counting down when start is pressed
-//
-// this operation itself is not waiting for anything to be completed before it can continue and as such it does not need to return a Promise
-//
-// The logic for the function should be nearly identical to the implementation in stopwatch.js
-// only instead of doing timer = setInterval(newtimer, 10); you should instead call countDown for the very first time
-// we will not need any setInterval calls in this whole file
 let timer = 0;
 
 const toggle = (e) => {
@@ -109,45 +96,20 @@ const toggle = (e) => {
   }
 };
 
-// Is there a reason we have to wait 500 milliseconds before we can say whether hours === 00 && min === 00 && sec === 00?
-// Do we need a promise here or can we directly return the answer to that question?
-//
-// try to keep in mind why promises are used, a promise represent something that at some point in the future will resolve to a value...
-// If we can immediately return the desired value and we do not gain anything by waiting we should not use a Promise.
-
-// deleted func
-
-// this function is where the magic will happen
-// try to think about this countDown function as 1 step in the countdown process that will subtract exactly one
-// second from the remaining time after one second before calling itself again
-// until there is no more time left on the clock
-//
-// Take a look at the countDownTemplate function I provided for some inspiration on what this function should do
 function newtimer() {
-  console.log("new timer");
-  console.log(hours, sec, min);
-  count--; // increment in count.
-  console.log(count, "count");
-
-  min = Math.floor(count / 60);
-  console.log(min, "min");
-  sec = count - min * 60;
-  console.log(sec, "sec");
-  hours = Math.floor(count / 3600);
-  console.log(hours, "hours");
-  /*
-  hours = Math.floor((count % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  min = Math.floor((count % (1000 * 60 * 60)) / (1000 * 60));
-  sec = Math.floor((count % (1000 * 60)) / 1000);
-
-  /*
-  hours = parseInt((count * 10) / 1000 / 60 / 60); // calculate hours
-  min = parseInt((count * 10) / 1000 / 60); // calculate minutes
-  sec = parseInt(((count * 10) / 1000) % 60); // calculate seconds
-*/
+  count--;
+  if (sec !== 00) {
+    sec--;
+  } else if (min !== 00 && sec === 0) {
+    sec = 59;
+    min--;
+  } else if (hours !== 0 && min === 0) {
+    min = 60;
+    hours--;
+    console.log(hours, min, sec);
+  }
   displayTime();
 }
-
 /**
  * I am a function that returns a Promise that will resolve after 1 second!
  *
